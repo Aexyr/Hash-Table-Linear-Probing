@@ -112,7 +112,7 @@ public:
 		Parameter: an int indicating the index of the value in the
 				   hash table that must be returned
 	*/
-	int& operator[](int index) const;
+	int operator[](int index) const;
 
 	/*
 		Destructor
