@@ -3,7 +3,7 @@
 ostream & operator << (ostream & out, const HashTable & hash)
 {
 	int temp;
-	for (int i = 0; i < capacity; ++i) 
+	for (int i = 0; i < hash.capacity; ++i) 
 	{
 		temp = hash.table[i];
 		out << "Index " << i << ": ";
