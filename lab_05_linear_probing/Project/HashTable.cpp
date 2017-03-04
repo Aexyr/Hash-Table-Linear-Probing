@@ -73,7 +73,7 @@ void HashTable::insert(int key)
 bool HashTable::search(int key) const
 {
 	int index = hashValue(key), counter = 0;
-	while (counter <= capacity) 
+	while (counter <= capacity && table[index] != -1) 
 	{
 		if (table[index] == key)
 			return true;
@@ -110,7 +110,7 @@ HashTable HashTable::operator=(const HashTable & otherHash)
 	return *this;
 }
 
-int & HashTable::operator[](int index) const
+int HashTable::operator[](int index) const
 {
 	return table[index];
 }
