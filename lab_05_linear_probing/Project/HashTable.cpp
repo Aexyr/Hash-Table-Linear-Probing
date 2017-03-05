@@ -65,7 +65,7 @@ void HashTable::insert(int key)
 				added = true;
 			} 
 			else
-				index = (index == capacity) ? 0 : index + 1;
+				index = (index == (capacity - 1)) ? 0 : index + 1;
 		}
 	}
 }
@@ -78,7 +78,7 @@ bool HashTable::search(int key) const
 		if (table[index] == key)
 			return true;
 
-		index = (index == capacity) ? 0 : index + 1;
+		index = (index == (capacity - 1)) ? 0 : index + 1;
 		++counter;
 	}
 
