@@ -49,13 +49,13 @@ HashTable::HashTable(const HashTable & otherHash)
 
 void HashTable::insert(int key)
 {
-	int index = hashValue(key);
-	bool added = false;
-
 	if (numOfElements == capacity)
-		cout << "Table is already full!!!" << endl;
+		cerr << "Table is already full!!!" << endl;
 	else 
-	{
+	{	
+		int index = hashValue(key);
+		bool added = false;
+		
 		while (!added) 
 		{
 			if (table[index] == -1) 
@@ -72,14 +72,17 @@ void HashTable::insert(int key)
 
 bool HashTable::search(int key) const
 {
-	int index = hashValue(key), counter = 0;
-	while (counter < capacity && table[index] != -1) 
+	if (numOfElements != 0)
 	{
-		if (table[index] == key)
-			return true;
+		int index = hashValue(key), counter = 0;
+		while (counter < capacity && table[index] != -1) 
+		{
+			if (table[index] == key)
+				return true;
 
-		index = (index == (capacity - 1)) ? 0 : index + 1;
-		++counter;
+			index = (index == (capacity - 1)) ? 0 : index + 1;
+			++counter;
+		}
 	}
 
 	return false;
@@ -100,7 +103,7 @@ HashTable HashTable::operator=(const HashTable & otherHash)
 			capacity = otherHash.capacity;
 			table = new int[capacity];
 		}
-		for (int i = 0; i < otherHash.numOfElements; ++i)
+		for (int i = 0; i < otherHash.otherHash.capacity; ++i)
 			table[i] = otherHash.table[i];
 		numOfElements = otherHash.numOfElements;
 	}
